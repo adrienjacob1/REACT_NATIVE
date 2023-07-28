@@ -1,48 +1,36 @@
-import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-
-
-
-let toSwitch = false;
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, Pressable } from 'react-native';
 
 export default function App() {
-  const [color, setColor] = useState({color:'green'});
-  const [name, setName] = useState("App");
+  const [isOn, setIsOn] = useState(true);
+
+  const switchOnStyle = {
+    backgroundColor: 'red',
+    color: 'black',
+  };
+
+  const switchOffStyle = {
+    backgroundColor: 'darkblue',
+    color: 'white',
+  };
+
+  const handleSwitchOnPress = () => {
+    setIsOn(true);
+  };
+
+  const handleSwitchOffPress = () => {
+    setIsOn(false);
+  };
 
   return (
     <View style={styles.container}>
-      <Text numberOfLines={1} style={color}
-      onPress={() => { 
-
-        if (toSwitch) {
-          setColor({color:'green'});
-          setName("App");
-        }
-        else {
-          setColor({color:'blue'});
-          setName("SUPER App");
-        }
-
-        toSwitch = !toSwitch;
-
-        console.log(toSwitch);
-
-      } }> <p>Open up App.js to START working on your {name} !</p> <p>COUCOU</p> </Text>
-      
-      <div className='buttonSwitch'>
-        <button onClick={() => { 
-            setColor({color:'blue'});
-            setName("SUPER App");
-        } }>Un beau button : BLUE</button>
-
-        <button onClick={() => { 
-            setColor({color:'green'});
-            setName("App");
-        } }>Un beau button : GREEN</button>
-      </div>
-
-      <StatusBar style="auto" />
+      <Text>Open up App.js to start working on your app!</Text>
+      <Pressable onPress={handleSwitchOnPress}>
+        <Text style={[styles.button, isOn ? switchOnStyle : switchOffStyle]}>Switch On</Text>
+      </Pressable>
+      <Pressable onPress={handleSwitchOffPress}>
+        <Text style={[styles.button, isOn ? switchOffStyle : switchOnStyle]}>Switch Off</Text>
+      </Pressable>
     </View>
   );
 }
@@ -50,15 +38,15 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'rgb(155,255,210)',
+    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  txt: {
-    color: 'black',
-    textAlign: 'center',
+  button: {
+    padding: 10,
+    marginVertical: 5,
+    borderRadius: 5,
+    fontSize: 18,
+    fontWeight: 'bold',
   },
-  buttonSwitch: {
-    flex: 1,
-  }
 });
