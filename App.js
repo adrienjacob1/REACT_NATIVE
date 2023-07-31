@@ -1,20 +1,11 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-import {InfoLevel1} from "./Pages/InfoLevel1";
-import {InfoLevel2} from "./Pages/InfoLevel2";
+import InfoLevelOne from './components/InfoLevelOne';
+import { InfoLevelTwo } from './components/InfoLevelTwo';
+import Home from './components/Home';
 
 
 
-
-
-
-const Stack = createStackNavigator();
-const StackNavigator = () => (
-    <Stack.Navigator>
-      <Stack.Screen name="InfoLevel1" component= {InfoLevel1}></Stack.Screen>
-      <Stack.Screen name="InfoLevel2" component= {InfoLevel2}></Stack.Screen>
-    </Stack.Navigator>
-)
 
 export default function App() {
   return (
@@ -35,7 +26,14 @@ export default function App() {
   );
 }
 
-
+const Stack = createStackNavigator();
+const StackNavigator = () => (
+    <Stack.Navigator>
+      <Stack.Screen name="Home" component={Home}></Stack.Screen>
+      <Stack.Screen name="InfoLevelOne" component={InfoLevelOne}></Stack.Screen>
+      <Stack.Screen name="InfoLevelTwo" component={InfoLevelTwo}></Stack.Screen>
+    </Stack.Navigator>
+)
 /*
 const styles = StyleSheet.create({
   container: {
