@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { SafeAreaView, View, Text, StyleSheet, Pressable, Image } from 'react-native';
+import InfoPerso from "./components/InfoPerso.js";
 
 export default function App() {
   const [isOn, setIsOn] = useState(true);
@@ -45,13 +46,15 @@ export default function App() {
         <Pressable onPress={handleSwitchOffPress}>
           <Text style={[styles.button, isOn ? switchOffStyle : switchOnStyle]}>Switch Off</Text>
         </Pressable>
+
+        
       </View>
 
       <Pressable onPress={catChange}>
         <Image source={catimg} style={styles.imgstyle} />
       </Pressable>
 
-
+      <InfoPerso></InfoPerso>
     </SafeAreaView>
   );
 }
@@ -82,3 +85,4 @@ const styles = StyleSheet.create({
   }
 
 });
+
