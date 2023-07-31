@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { SafeAreaView, View, Text, StyleSheet, Pressable, Image } from 'react-native';
 import InfoPerso from "./components/InfoPerso.js";
+import Button from "./components/Button.js";
 
 export default function App() {
   const [isOn, setIsOn] = useState(true);
@@ -55,6 +56,9 @@ export default function App() {
       </Pressable>
 
       <InfoPerso></InfoPerso>
+
+      <Button />
+      
     </SafeAreaView>
   );
 }
